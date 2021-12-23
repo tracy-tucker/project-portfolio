@@ -5,22 +5,22 @@ import pageLinks from "../constants/links"
 import { Link } from "gatsby"
 const Navbar = () => {
   return (
-    <nav>
+    <nav className="navbar">
       <div className="nav-center">
         <div className="nav-header">
           <img src={logo} alt="TT" />
           <button type="button" className="toggle-btn">
             <FaAlignRight />
           </button>
-          <div className="nav-links">
-            {pageLinks.map(link => {
-              return (
-                <Link key={link.id} to={link.url}>
-                  {link.text}
-                </Link>
-              )
-            })}
-          </div>
+        </div>
+        <div className="nav-links">
+          {pageLinks.map(link => {
+            return (
+              <Link key={link.id} to={link.url}>
+                {link.text}
+              </Link>
+            )
+          })}
         </div>
       </div>
     </nav>
