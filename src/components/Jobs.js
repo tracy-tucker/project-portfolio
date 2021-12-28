@@ -4,8 +4,74 @@ import { FaAngleDoubleRight } from "react-icons/fa"
 import { graphql, useStaticQuery } from "gatsby"
 import { Link } from "gatsby"
 
+const query = graphql`
+  {
+    allStrapiJob {
+      nodes {
+        data {
+          attributes {
+            position
+            company
+            date
+            desc {
+              id
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
 const Jobs = () => {
-  return <h2>jobs component</h2>
+  const data = useStaticQuery(query)
+
+  const {
+    allStrapiJob: { nodes: layers },
+  } = data
+
+  const attrs = layers.map(attr => {
+    return attr.data.map(singleAttr => {
+      return singleAttr.attributes
+    })
+  })
+  const layer = attrs.map(singleLayer => {
+    return singleLayer[0]
+  })
+
+  const { company, position, date, desc } = layer[0]
+
+  console.log("JOBS", layer[0])
+
+  // const { company, position, date, desc } = attr[0]
+
+  return (
+    <section className="section jobs">
+      <Title title="experience" />
+      <div className="jobs-center">
+        {/* btn container */}
+        <div className="btn-container"></div>
+        {/* job info */}
+        <article className="job-info">
+          <h3>{position}</h3>
+          <h4>{company}</h4>
+          <p className="job-date">{date}</p>
+          {desc.map(item => {
+            return (
+              <div key={item.id} className="job-desc">
+                <FaAngleDoubleRight className="job-icon"></FaAngleDoubleRight>
+                {item.name}
+              </div>
+            )
+          })}
+        </article>
+      </div>
+      <Link to="/about" className="btn center-btn">
+        more info
+      </Link>
+    </section>
+  )
 }
 
 export default Jobs
