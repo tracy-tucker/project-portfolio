@@ -45,7 +45,7 @@ const Jobs = () => {
 
   const { company, position, date, desc } = jobs[value]
 
-  console.log("JOBS", jobs)
+  // console.log("JOBS", jobs)
 
   // const { company, position, date, desc } = attr[0]
 
