@@ -29,6 +29,10 @@ module.exports = {
             name: `job`,
             endpoint: `jobs/?populate=desc`,
           },
+          {
+            name: `project`,
+            endpoint: `projects/?populate=stack`,
+          },
         ],
         // singleTypes: [`home-page`, `contact`],
       },
