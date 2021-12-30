@@ -6,6 +6,7 @@ import Jobs from "../components/Jobs"
 import Projects from "../components/Projects"
 import Seo from "../components/Seo"
 const IndexPage = ({ data }) => {
+  console.log(data)
   const {
     allStrapiProject: { nodes: layers },
   } = data
@@ -56,7 +57,6 @@ export const query = graphql`
           id
         }
       }
-      totalCount
     }
     imageSharp {
       gatsbyImageData(placeholder: BLURRED, layout: CONSTRAINED)
